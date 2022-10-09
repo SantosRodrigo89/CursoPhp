@@ -11,9 +11,7 @@ $sql = $conn->prepare('SELECT * FROM rup left join endereco on (rup.id = enderec
 $sql->execute();
 $dadosRup = $sql->fetchAll(PDO::FETCH_OBJ);
 
-/* $sql = $conn->prepare('DELETE FROM rup WHERE nome  ');
-$sql->execute();
-$deleteRup = $sql-> */
+
 
 ?>
 
@@ -25,7 +23,7 @@ $deleteRup = $sql-> */
 </head>
 
 <body>
-    <div  id="after_submit"></div>
+    <div id="after_submit"></div>
     <form class="containerPrincipal" id="contact_form" action="./php/montarDados.php" method="POST" enctype="multipart/form-data">
         <div class="row">
             <label class="required" for="email">CPF/CNPJ:</label><br />
@@ -73,8 +71,8 @@ $deleteRup = $sql-> */
                 <tr>
                     <td><?= $dado->nome ?></td>
                     <td><?= $dado->email ?></td>
-                    <td><?= $dado->logradouro ?></td>
-                    <td><button>Editar</button></td>
+                    <td><?= ' $dado->logradouro' ?></td>
+                    <td><a href="./edit.php?idcliente=<?= $dado->id ?>">Editar<a></td>
                     <td><button>Excluir</button></td>
                 </tr>
             <?php endforeach; ?>
