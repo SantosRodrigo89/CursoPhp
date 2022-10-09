@@ -10,7 +10,7 @@ $nascimento = $_POST['nascimento'];
 $message = $_POST['message'];
 $uf = $_POST['uf'];
 
-$sql = $conn->prepare('UPDATE rup SET cpfcnpj = "' . $cpfcnpj . '", nome= "' . $name . '", data_nascimento="' . $nascimento . '",email="' . $email . '"
+$sql = $conn->prepare('UPDATE rup SET cpfcnpj = "' . $cpfcnpj . '", nome= "' . $name . '", ,email="' . $email . '", data_nascimento="' . $nascimento . '"
 WHERE id = "' . $id . '"');
 $sql -> execute();
 

@@ -7,11 +7,11 @@ $sql = $conn->prepare('SELECT * FROM estados');
 $sql->execute();
 $consulta = $sql->fetchAll(PDO::FETCH_OBJ);
 
-$sql = $conn->prepare('SELECT * FROM rup left join endereco on (rup.id = endereco.fk_rup)');
+$sql = $conn->prepare('SELECT r.id, r.cpfcnpj, r.nome, r.data_nascimento, r.email, e.uf FROM rup r 
+inner JOIN estados e 
+ON e.id= r.fk_uf;');
 $sql->execute();
 $dadosRup = $sql->fetchAll(PDO::FETCH_OBJ);
-
-
 
 ?>
 
@@ -62,7 +62,8 @@ $dadosRup = $sql->fetchAll(PDO::FETCH_OBJ);
             <tr>
                 <th>Nome</th>
                 <th>Email</th>
-                <th>Logradouro</th>
+                <th>UF</th>
+                <th>Nascimento</th>
                 <th colspan="2">Ações</th>
             </tr>
         </thead>
@@ -71,9 +72,10 @@ $dadosRup = $sql->fetchAll(PDO::FETCH_OBJ);
                 <tr>
                     <td><?= $dado->nome ?></td>
                     <td><?= $dado->email ?></td>
-                    <td><?= ' $dado->logradouro' ?></td>
+                    <td><?= $dado->uf ?></td>
+                    <td><?= $dado->data_nascimento ?></td>
                     <td><a href="./edit.php?idcliente=<?= $dado->id ?>">Editar<a></td>
-                    <td><button>Excluir</button></td>
+                    <td><a href="./php/delete.php?idcliente=<?= $dado->id ?>">Excluir<a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

@@ -10,8 +10,8 @@ $message = $_POST['message'];
 $uf = $_POST['uf'];
 
 //Query de insert
-$sql = $conn->prepare("INSERT INTO rup(cpfcnpj, nome, data_nascimento, email, data_criacao) 
-value ('$cpfcnpj','$name', '$email', '$nascimento', '$message')");
+$sql = $conn->prepare("INSERT INTO rup(cpfcnpj, nome, data_nascimento, email, data_criacao, fk_uf) 
+value ('$cpfcnpj','$name', '$email', '$nascimento', '$message', $uf)");
 $sql->execute();
 header('location: ../index.php');
 

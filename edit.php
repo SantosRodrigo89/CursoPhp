@@ -4,14 +4,16 @@
 
 $idcliente = $_GET['idcliente'];
 
-$sql = $conn->prepare('SELECT * FROM rup WHERE id = "' . $idcliente . '"');
+$sql = $conn->prepare('SELECT r.id, r.cpfcnpj, r.nome, r.data_nascimento, r.email, e.uf FROM rup r 
+inner JOIN estados e 
+ON e.id = r.fk_uf WHERE r.id = "' . $idcliente . '" ');
 $sql->execute();
 $consulta = $sql->fetch(PDO::FETCH_OBJ);
 
 $sql = $conn->prepare('SELECT * FROM estados');
 $sql->execute();
-$consulta = $sql->fetch(PDO::FETCH_OBJ);
-
+$consultaUf = $sql->fetch(PDO::FETCH_OBJ);
+    
 ?>
 
 <head>
