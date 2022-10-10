@@ -11,7 +11,7 @@ $uf = $_POST['uf'];
 
 //Query de insert
 $sql = $conn->prepare("INSERT INTO rup(cpfcnpj, nome, data_nascimento, email, data_criacao, fk_uf) 
-value ('$cpfcnpj','$name', '$email', '$nascimento', '$message', $uf)");
+value ('$cpfcnpj','$name', '$nascimento', '$email', '$message', $uf)");
 $sql->execute();
 header('location: ../index.php');
 
